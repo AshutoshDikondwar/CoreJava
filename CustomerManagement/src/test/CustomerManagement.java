@@ -2,6 +2,7 @@ package test;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -59,8 +60,12 @@ public class CustomerManagement {
 						break;
 					case 6:
 						System.out.println("Enter email");
-						index = validateEmail(sc.next(), list);
-						list.remove(index);
+
+						String email = sc.next();
+						Iterator<Customer> cid = list.iterator();
+						while (cid.hasNext())
+							if (cid.next().getEmail().equals(email))
+								cid.remove();
 						System.out.println("Removed Successfully");
 
 						break;
@@ -81,7 +86,7 @@ public class CustomerManagement {
 						list.get(index).setRegAmount(changePlan.getPrice());
 						System.out.println("Your Plan Changed to" + changePlan);
 						break;
-					
+
 					case 0:
 						exit = true;
 						break;
