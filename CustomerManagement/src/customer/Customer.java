@@ -3,11 +3,9 @@ package customer;
 import java.time.LocalDate;
 
 public class Customer {
-	private int id;
-	private String name;
-	private String lastName;
-	private String email;
-	private String password;
+
+	private int custId;
+	private String name, lastName, email, password;
 	private double regAmount;
 	private LocalDate dob;
 	private ServicePlan plan;
@@ -17,7 +15,7 @@ public class Customer {
 			ServicePlan plan) {
 		super();
 		++idGenerator;
-		this.id = idGenerator;
+		this.custId = idGenerator;
 		this.name = name;
 		this.lastName = lastName;
 		this.email = email;
@@ -27,21 +25,16 @@ public class Customer {
 		this.plan = plan;
 	}
 
+	public LocalDate getDob() {
+		return dob;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
 	public Customer(String email) {
 		this.email = email;
-	}
-
-	public Customer(String email, String password) {
-		this.email = email;
-		this.password = password;
-	}
-
-	public void setRegAmount(double regAmount) {
-		this.regAmount = regAmount;
-	}
-
-	public void setPlan(ServicePlan plan) {
-		this.plan = plan;
 	}
 
 	public String getPassword() {
@@ -52,45 +45,44 @@ public class Customer {
 		this.password = password;
 	}
 
-	public int getId() {
-		return id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
 	public double getRegAmount() {
 		return regAmount;
 	}
 
-	public LocalDate getDob() {
-		return dob;
+	public void setRegAmount(double regAmount) {
+		this.regAmount = regAmount;
 	}
 
 	public ServicePlan getPlan() {
 		return plan;
 	}
 
-	public boolean equals(Object o) {
-		System.out.println("in customer equals");
-		if (o instanceof Customer)
-			return (this.email).equals(((Customer) o).email);
-		return false;
+	public void setPlan(ServicePlan plan) {
+		this.plan = plan;
 	}
+
+	public int getCustId() {
+		return custId;
+	}
+
+//	In HashMap we don't need to override equals and hashCOde becoz hashMap works on key which is already unique
+
+//	@Override
+//	public boolean equals(Object o) {
+//		if (o instanceof Customer)
+//			return this.email.equals(((Customer) o).email);
+//		return false;
+//	}
+//
+//	@Override
+//	public int hashCode() {
+//		return this.email.hashCode();
+//	}
 
 	@Override
 	public String toString() {
-		return "Customer [id=" + id + ", name=" + name + ", lastName=" + lastName + ", email=" + email + ", regAmount="
-				+ regAmount + ", dob=" + dob + ", plan=" + plan + "]";
+		return "Customer [custId=" + custId + ", name=" + name + ", lastName=" + lastName + ", email=" + email
+				+ ", regAmount=" + regAmount + ", dob=" + dob + ", plan=" + plan + "]";
 	}
 
 }

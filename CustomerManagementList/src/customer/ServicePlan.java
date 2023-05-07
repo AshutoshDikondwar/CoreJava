@@ -1,7 +1,7 @@
 package customer;
 
 public enum ServicePlan {
-	GOLD(1000), SILVER(500), DIAMOND(2000);
+	SILVER(1000), GOLD(2000), DIAMOND(5000), PLATINUM(10000);
 
 	private double price;
 
@@ -13,8 +13,13 @@ public enum ServicePlan {
 		return price;
 	}
 
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
 	@Override
 	public String toString() {
-		return name() ;
+		return name() + "@" + price;
 	}
+
 }

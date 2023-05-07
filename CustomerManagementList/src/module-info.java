@@ -5,5 +5,5 @@
  * @author Ashutosh
  *
  */
-module customerManagement {
+module day5_lab1 {
 }
